@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router";
 import logo from "../../assets/logo.webp";
 import { useUserStore } from "../../stores/userStore";
 export const Login = () => {
-  const { user, login } = useUserStore();
+  const { user, login, errorMessage } = useUserStore();
 
   const navigate = useNavigate();
 
@@ -41,6 +41,7 @@ export const Login = () => {
           className="bg-card mx-auto w-full max-w-md space-y-4 rounded-xl px-4 py-6 max-md:max-w-sm md:px-8 md:py-8"
         >
           <h2 className="text-2xl md:text-3xl">Connexion</h2>
+          {errorMessage && <p className="text-lg">{errorMessage}</p>}
           <div className="space-y-4 md:space-y-8">
             <div className="space-y-2">
               <label

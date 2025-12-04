@@ -13,6 +13,7 @@ type User = {
 type userStoreType = {
   user: User | null;
   loading: boolean;
+  errorMessage: string;
 
   login: (email: User["email"], password: User["password"]) => void;
 };
@@ -20,6 +21,7 @@ type userStoreType = {
 export const useUserStore = create<userStoreType>((set) => ({
   user: null,
   loading: false,
+  errorMessage: "",
 
   login: async (email, password) => {
     set({ loading: true });
@@ -28,7 +30,7 @@ export const useUserStore = create<userStoreType>((set) => ({
       set({ user: res.data.user });
     } catch (err) {
       if (err instanceof AxiosError) {
-        console.log(err);
+        set({ errorMessage: err.response?.data.message || null });
       }
     } finally {
       set({ loading: false });
