@@ -1,4 +1,4 @@
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, Printer } from "lucide-react";
 import { useState } from "react";
 import logo from "../assets/logo.webp";
 import type { Ticket } from "../types";
@@ -18,8 +18,12 @@ export const Success = ({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handlePrint = () => {
+    window.print();
+  };
+
   return (
-    <div className="bg-card/50 mx-auto h-max max-w-xl min-w-[350px] px-4 py-6 print:bg-transparent print:px-0 print:py-0">
+    <div className="bg-card/50 mx-auto h-max max-w-xl min-w-[350px] px-4 py-6 print:bg-transparent print:px-0 print:py-0 print:text-black">
       <div className="flex flex-col items-center space-y-4">
         <div className="bg-primary/20 flex size-15 items-center justify-center rounded-full print:hidden">
           <Check className="text-green-300" strokeWidth={4} />
@@ -32,7 +36,7 @@ export const Success = ({
           <span className="font-semibold">Itad Wifi Zone</span>
         </div>
         <p>Votre code d'accès WiFi</p>
-        <div className="bg-primary relative w-full border border-gray-200/20 px-6 py-4 text-center text-2xl">
+        <div className="bg-primary relative w-full border border-gray-200/20 px-6 py-4 text-center text-2xl print:font-bold">
           {generatedTicket.code}
           <button
             onClick={handleCopy}
@@ -57,6 +61,13 @@ export const Success = ({
             <li>3. Cliquez sur "Se connecter"</li>
           </ol>
         </div>
+        <button
+          className="bg-primary flex w-full cursor-pointer items-center justify-center gap-x-2 px-4 py-2 print:hidden"
+          onClick={handlePrint}
+        >
+          <Printer className="size-5" />
+          Imprimer le ticket
+        </button>
         <button
           className="bg-primary w-full cursor-pointer gap-x-1 px-4 py-2 print:hidden"
           onClick={resetPurchase}
