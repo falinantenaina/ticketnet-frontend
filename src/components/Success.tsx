@@ -24,14 +24,14 @@ export const Success = ({
 
   return (
     <div className="bg-card/50 mx-auto h-max max-w-xl min-w-[350px] px-4 py-6 print:bg-transparent print:px-0 print:py-0 print:text-black">
-      <div className="flex flex-col items-center space-y-4">
+      <div className="flex flex-col items-center space-y-4 print:justify-start print:space-y-0">
         <div className="bg-primary/20 flex size-15 items-center justify-center rounded-full print:hidden">
           <Check className="text-green-300" strokeWidth={4} />
         </div>
         <h3 className="text-center text-xl font-bold print:hidden">
           Paiement réussi!
         </h3>
-        <div className="hidden print:flex print:items-center print:justify-center">
+        <div className="flex items-center justify-center gap-x-2">
           <img src={logo} alt="Itad logo" className="size-10" />
           <span className="font-semibold">Itad Wifi Zone</span>
         </div>
