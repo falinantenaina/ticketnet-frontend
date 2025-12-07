@@ -30,7 +30,7 @@ const paymentMethods = [
 const BuyTickets = () => {
   const [plans, setPlans] = useState<null | Plan[]>(null);
   const [selectedPlan, setSelectedPlan] = useState<null | Plan["_id"]>(null);
-  const [selectedPayment, setSelectedPayment] = useState("");
+  const [selectedPayment, setSelectedPayment] = useState("cash");
   const [generatedTicket, setGeneratedTicket] = useState<Ticket | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -59,7 +59,7 @@ const BuyTickets = () => {
 
   const resetPurchase = () => {
     setSelectedPlan(null);
-    setSelectedPayment("");
+    setSelectedPayment("cash");
     setGeneratedTicket(null);
   };
 
@@ -86,12 +86,12 @@ const BuyTickets = () => {
           ))}
         </div>
       </div>
-      <div className="bg-card/50 space-y-4 rounded-xl px-4 py-4 md:px-8 md:py-6 lg:px-16 lg:py-12">
-        <h2 className="flex items-center gap-x-2">
+      <div className="space-y-4 rounded-xl px-4 py-4 md:px-8 md:py-6 lg:px-16 lg:py-12">
+        <h2 className="hidden items-center gap-x-2">
           <CreditCard className="text-primary size-10" />
           <span className="text-2xl">Mode de paiement</span>
         </h2>
-        <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+        <div className="mt-4 hidden grid-cols-1 gap-4 md:grid-cols-3">
           {paymentMethods.map((paymentMethod) => (
             <div key={paymentMethod.name} className="space-y-2">
               <button
